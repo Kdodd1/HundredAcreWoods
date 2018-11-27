@@ -1,0 +1,173 @@
+<<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+    var tigger = {
+      character: "Tigger",
+      needsHoney: false,
+      greet: function(){
+            console.log("THe wonderful thing about Tiggers is Tiggers are wonderful things!")}};
+
+    var piglet = {
+      character: "Piglet",
+      needsHoney: false,
+      greet: function(){
+          console.log("I'm P-p-p-piglet! H-h-h-h-ow are you?")}};
+
+    var pooh = {
+      character: "Winnie the Pooh",
+      numneedsHoney: false,
+      greet: function(){
+          console.log("I want that good honey!")}};
+    var bees = {
+      character: "Bees",
+      greet: function(){
+          console.log("Pooh is mean. Don't go to his house. He steals all our honey")}};
+    var owl = {
+      character: "Owl",
+      needsHoney: false,
+      greet: function(){
+          console.log("How many licks does it take to get to the center of a tootsie pop?")}};
+    var christopherRobin = {
+      character: "ChristopherRobin",
+      needsHoney: false,
+      greet: function(){
+            console.log("I'm Christopher")}};
+    var rabbit = {
+      character: "rabbit",
+      needsHoney: false,
+      greet: function(){
+            console.log("I like to eat carrots!")}};
+    var gopher = {
+      character: "gopher",
+      needsHoney: false,
+      greet: function(){
+            console.log("I'm gopher")}};
+    var kanga = {
+      character: "kanga",
+      needsHoney: false,
+      greet: function(){
+          console.log("I'm kanga")}};
+    var eeyore = {
+      character: "eeyore",
+      needsHoney: false,
+      greet: function(){
+          console.log("Where is my tail?")}};
+    var heffalumps = {
+      character: "heffalumps",
+      needsHoney: false,
+      greet: function(){
+            console.log("I'm heffalumps!")}};
+    var player = {
+      location: tigger,
+      honey: false
+      }
+      piglet.north = owl;
+      piglet.east = pooh;
+      tigger.north = pooh;
+      pooh.north = christopherRobin;
+      pooh.east = bees;
+      pooh.south = tigger;
+      pooh.west = piglet;
+      bees.north = rabbit;
+      bees.west = pooh;
+      owl.east = christopherRobin;
+      owl.south = piglet;
+      christopherRobin.north = kanga;
+      christopherRobin.east = rabbit;
+      christopherRobin.south = pooh;
+      christopherRobin.west = owl;
+      rabbit.east = gopher;
+      rabbit.south = bees;
+      rabbit.west = christopherRobin;
+      gopher.west = rabbit;
+      kanga.north = eeyore;
+      kanga.south = christopherRobin;
+      eeyore.south = kanga;
+      eeyore.east = heffalumps;
+      heffalumps.west = eeyore;
+    var residents = [tigger, piglet, pooh, owl, christopherRobin, rabbit, gopher, kanga, eeyore, heffalumps ];
+    function mission(){
+      var house = Math.floor((Math.random() * 10));
+      var houseToDeliver = residents[house];
+      houseToDeliver.needsHoney = true;
+      console.log(houseToDeliver.character + " needs you to drop off honey!")
+
+    }
+    function pickUp(){
+      if (player.location == bees) {
+        console.log("Mmmmhmm honey");
+        player.honey = true;
+      }
+      else{
+        console.log("There is no honey at " + player.location.character + "'s house");
+      }
+    }
+    function drop(){
+      if (player.location.needsHoney == true && player.honey == true){
+        console.log(player.location.character + " says 'thank-you for the honey!'");
+        player.honey = false;
+        player.location.needsHoney = false
+        mission()
+      }else if(player.honey == false){
+        console.log("You need to get honey first!");
+      }
+      else{
+        console.log("This is not where the honey needs to be dropped!")
+      }
+    }
+    function move(direction){
+      //north
+      if(direction == "north"){
+        if(player.location.north){
+        player.location = player.location.north;
+        console.log("You are now at " + player.location.character + "'s house");
+        player.location.greet()
+        }
+        else{
+          console.log("Nobody lives there!");
+        }
+      }
+      //east
+      if(direction == "east"){
+        if(player.location.east){
+        player.location = player.location.east;
+        console.log("You are now at " + player.location.character + "'s house");
+        player.location.greet()
+        }
+        else{
+          console.log("Nobody lives there!");
+        }
+      }
+      //south
+      if(direction == "south"){
+        if(player.location.south){
+        player.location = player.location.south;
+        console.log("You are now at " + player.location.character + "'s house");
+        player.location.greet()
+        }
+        else{
+          console.log("Nobody lives there!");
+        }
+      }
+      //west
+      if(direction == "west"){
+        if(player.location.west){
+        player.location = player.location.west;
+        console.log("You are now at " + player.location.character + "'s house");
+        player.location.greet()
+        }
+        else{
+          console.log("Nobody lives there!");
+        }
+      }
+    }
+    mission()
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
